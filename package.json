@@ -1,0 +1,24 @@
+{
+  "name": "simpleblog",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "concurrently \"cd frontend && npm start\" \"cd backend && npm start\"",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tham-ph/SimpleBlog.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/tham-ph/SimpleBlog/issues"
+  },
+  "homepage": "https://github.com/tham-ph/SimpleBlog#readme",
+  "dependencies": {
+    "concurrently": "^7.2.1",
+    "dotenv": "^16.0.1"
+  }
+}
