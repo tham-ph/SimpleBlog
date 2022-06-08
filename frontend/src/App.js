@@ -15,7 +15,7 @@ function App() {
         users.map(user => {
           return (
             <div>
-              <h1>test</h1>
+              <h1 className="text-3xl underline">test</h1>
               <h1>username: {user.username}</h1>
             </div>
           );
