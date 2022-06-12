@@ -10,6 +10,10 @@ app.use(cors());
 
 mongoose.connect(process.env.MONGODB_CONNECTION_STRING);
 
+app.get("/api/env/google-oauth-client-id", (req, res) => {
+  res.json(process.env.GOOGLE_OAUTH_CLIENT_ID);
+});
+
 app.get("/getAllUsers", (req, res) => {
   userModel.find({},(err, result) => {
     if (err) {
