@@ -7,7 +7,6 @@ import jwt_decode from "jwt-decode";
 const UserControl = () => {
   const [clientId, setClientId] = useState("");
   const [userData, setUserData] = useState({});
-
   useEffect(() => {
     Axios.get("/api/env/google-oauth-client-id").then(res => {
       setClientId(res.data);
@@ -16,10 +15,20 @@ const UserControl = () => {
 
   return (
     <GoogleOAuthProvider clientId={clientId}>
-      <GoogleLogin onSuccess={(res) => {
-        const userObject = jwt_decode(res.credential);
-        setUserData(userObject);
-      }}/>
+      {
+        Object.keys(userData).length === 0 ? (
+          <GoogleLogin onSuccess={(res) => {
+            const userObject = jwt_decode(res.credential);
+            setUserData(userObject);
+          }}/>
+        ) : (
+          <div className="flex justify-center items-center gap-2">
+            <img className="rounded-full w-8 h-8" src={userData.picture} alt="user's picture"></img>
+            <p>{userData.name}</p>
+          </div>
+        )
+      }
+
     </GoogleOAuthProvider>
   );
 }
