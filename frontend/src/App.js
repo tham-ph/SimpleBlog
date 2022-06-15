@@ -1,15 +1,18 @@
 import Navbar from "./Navbar";
-import BlogList from "./BlogList";
-import CreateANewBlogButton from "./CreateANewBlogButton";
+import BlogFeed from "./BlogFeed";
+import {BrowserRouter, Route, Routes} from "react-router-dom";
+import Editor from "./Editor";
 
 function App() {
 
   return (
-    <div>
+    <BrowserRouter>
       <Navbar/>
-      <BlogList/>
-      <CreateANewBlogButton/>
-    </div>
+      <Routes>
+        <Route path="/" element={<BlogFeed/>} />
+        <Route path="create" element={<Editor/>} />
+      </Routes>
+    </BrowserRouter>
   );
 }
 
