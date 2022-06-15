@@ -1,6 +1,6 @@
 import BlogCard from "./BlogCard";
 
-function BlogList() {
+const BlogFeed = () => {
   return (
     <div className="flex flex-wrap justify-center gap-4 p-2">
       <BlogCard/>
@@ -17,4 +17,4 @@ function BlogList() {
   );
 }
 
-export default BlogList;
+export default BlogFeed;
