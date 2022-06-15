@@ -10,7 +10,7 @@ function App() {
       <Navbar/>
       <Routes>
         <Route path="/" element={<BlogFeed/>} />
-        <Route path="create" element={<Editor/>} />
+        <Route path="/create" element={<Editor/>} />
       </Routes>
     </BrowserRouter>
   );
