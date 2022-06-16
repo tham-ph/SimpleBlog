@@ -46,7 +46,7 @@ const Editor = () => {
       </div>
   }
   return (
-    <div className="flex flex-col items-center p-4 gap-4">
+    <div className="flex flex-col p-4 gap-8">
       <h2 className="text-xl font-bold">Create A New Blog</h2>
       <div className="flex flex-col w-full gap-2">
         <div className="flex">
@@ -89,7 +89,11 @@ const Editor = () => {
           >Split Edit | Preview
           </button>
         </div>
-        {screen}
+      </div>
+      {screen}
+      <div className="flex justify-end gap-2">
+        <button className="bg-gray-500 text-white p-2 rounded hover:bg-black">Create</button>
+        <button className="bg-white text-black p-2 border border-black rounded hover:bg-gray-200">Cancel</button>
       </div>
     </div>
   );
