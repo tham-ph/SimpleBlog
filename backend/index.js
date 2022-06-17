@@ -14,6 +14,9 @@ app.get("/api/env/google-oauth-client-id", (req, res) => {
   res.json(process.env.GOOGLE_OAUTH_CLIENT_ID);
 });
 
+const userRoutes = require("./routes/userRoutes");
+app.use("/api/users", userRoutes);
+
 app.get("/getAllUsers", (req, res) => {
   userModel.find({},(err, result) => {
     if (err) {
