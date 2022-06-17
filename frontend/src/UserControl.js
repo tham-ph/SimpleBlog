@@ -20,6 +20,15 @@ const UserControl = () => {
           <GoogleLogin
             onSuccess={(res) => {
               const userObject = jwt_decode(res.credential);
+              Axios.post("api/users/sign-in-with-google", {
+                email: userObject.email,
+                name: userObject.name,
+                pictureURL: userObject.picture
+              }).then((res) => {
+                console.log(res);
+              }).catch((err) => {
+                console.log(err)
+              });
               setUserData(userObject);
             }}
             onError={() => {
