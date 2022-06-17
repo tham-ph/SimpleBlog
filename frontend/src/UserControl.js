@@ -25,7 +25,7 @@ const UserControl = () => {
                 name: userObject.name,
                 pictureURL: userObject.picture
               }).then((res) => {
-                console.log(res);
+                setUserData(res.data);
               }).catch((err) => {
                 console.log(err)
               });
@@ -37,11 +37,11 @@ const UserControl = () => {
           />
         ) : (
           <div className="flex justify-center items-center gap-2">
-            <img className="rounded-full w-8 h-8" src={userData.picture} alt="user's picture"></img>
+            <img className="rounded-full w-8 h-8" src={userData.pictureURL} alt="user's picture"></img>
             <p>{userData.name}</p>
             <div className="relative">
               <button onClick={() => {
-                document.getElementById("sign-out-button").classList.toggle("hidden");
+                document.getElementById("dropdown").classList.toggle("hidden");
               }}>
                 <svg
                   aria-hidden="true"
@@ -59,9 +59,14 @@ const UserControl = () => {
                   ></path>
                 </svg>
               </button>
-              <button id="sign-out-button" className="hidden whitespace-nowrap absolute top-9 right-2 bg-white text-black py-2 px-4 rounded shadow-md hover:bg-gray-200">
-                Sign Out
-              </button>
+              <div id="dropdown" className="hidden flex flex-col whitespace-nowrap absolute top-9 right-2 bg-gray-400 text-white shadow-md rounded">
+                <button className="py-2 px-4 rounded hover:bg-black">
+                  Change the username
+                </button>
+                <button className="py-2 px-4 rounded hover:bg-black">
+                  Sign Out
+                </button>
+              </div>
             </div>
           </div>
         )
