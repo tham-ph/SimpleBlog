@@ -2,11 +2,12 @@ import {GoogleOAuthProvider, GoogleLogin} from "@react-oauth/google";
 import {useState, useEffect} from "react";
 import Axios from "axios";
 import jwt_decode from "jwt-decode";
-
+import {useUserData} from "./App";
 
 const UserControl = () => {
   const [clientId, setClientId] = useState("");
-  const [userData, setUserData] = useState({});
+  const {userData, setUserData} = useUserData();
+
   useEffect(() => {
     Axios.get("/api/env/google-oauth-client-id").then(res => {
       setClientId(res.data);
