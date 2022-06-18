@@ -1,7 +1,8 @@
-import {useUserData} from "./App";
+import {getUserDataContext} from "./App";
+import {useContext} from "react";
 
 const UserProfile = ({children}) => {
-  const {userData} = useUserData();
+  const {userData} = useContext(getUserDataContext());
 
   return (
     <div className="flex justify-center items-center gap-2">

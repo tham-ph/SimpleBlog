@@ -1,12 +1,12 @@
 import {GoogleOAuthProvider, GoogleLogin} from "@react-oauth/google";
-import {useState, useEffect} from "react";
+import {useState, useEffect, useContext} from "react";
 import Axios from "axios";
 import jwt_decode from "jwt-decode";
-import {useUserData} from "./App";
+import {getUserDataContext} from "./App";
 
 const UserSignIn = () => {
   const [clientId, setClientId] = useState("");
-  const {setUserData} = useUserData();
+  const {setUserData} = useContext(getUserDataContext());
 
   useEffect(() => {
     Axios.get("/api/env/google-oauth-client-id").then(res => {

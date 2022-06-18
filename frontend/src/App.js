@@ -2,19 +2,19 @@ import Navbar from "./Navbar";
 import BlogFeed from "./BlogFeed";
 import {BrowserRouter, Route, Routes} from "react-router-dom";
 import Editor from "./Editor";
-import {createContext, useState, useContext} from "react";
+import {createContext, useState} from "react";
 
-const Context = createContext();
+const UserDataContext = createContext();
 
-const useUserData = () => {
-  return useContext(Context);
+const getUserDataContext = () => {
+  return UserDataContext;
 }
 
 function App() {
   const [userData, setUserData] = useState({});
 
   return (
-    <Context.Provider value={{userData, setUserData}}>
+    <UserDataContext.Provider value={{userData, setUserData}}>
       <BrowserRouter>
         <Navbar/>
         <Routes>
@@ -22,9 +22,9 @@ function App() {
           <Route path="/create" element={<Editor/>} />
         </Routes>
       </BrowserRouter>
-    </Context.Provider>
+    </UserDataContext.Provider>
   );
 }
 
 export default App;
-export {useUserData};
+export {getUserDataContext};

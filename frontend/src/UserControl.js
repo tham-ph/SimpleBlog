@@ -1,10 +1,11 @@
-import {useUserData} from "./App";
+import {getUserDataContext} from "./App";
 import UserSignIn from "./UserSignIn";
 import UserProfile from "./UserProfile";
 import UserDropdown from "./UserDropdown";
+import {useContext} from "react";
 
 const UserControl = () => {
-  const {userData} = useUserData();
+  const {userData} = useContext(getUserDataContext());
 
   return (
     <div>

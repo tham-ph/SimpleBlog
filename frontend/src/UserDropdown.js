@@ -1,7 +1,8 @@
-import {useUserData} from "./App";
+import {getUserDataContext} from "./App";
+import {useContext} from "react";
 
 const UserDropdown = () => {
-  const {userData, setUserData} = useUserData();
+  const {userData, setUserData} = useContext(getUserDataContext());
 
   return (
     <div className="relative">
