@@ -3,6 +3,7 @@ import BlogFeed from "./BlogFeed";
 import {BrowserRouter, Route, Routes} from "react-router-dom";
 import Editor from "./Editor";
 import {createContext, useState} from "react";
+import SignInAlertModal from "./SignInAlertModal";
 
 const UserDataContext = createContext();
 
@@ -16,6 +17,7 @@ function App() {
   return (
     <UserDataContext.Provider value={{userData, setUserData}}>
       <BrowserRouter>
+        <SignInAlertModal/>
         <Navbar/>
         <Routes>
           <Route path="/" element={<BlogFeed/>} />

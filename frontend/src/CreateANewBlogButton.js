@@ -1,5 +1,4 @@
 import { Link } from "react-router-dom";
-import SignInAlertModal from "./SignInAlertModal";
 import {useContext} from "react";
 import {getUserDataContext} from "./App";
 
@@ -10,7 +9,6 @@ const CreateANewBlogButton = () => {
   if (Object.keys(userData).length === 0) {
     ret = (
       <div>
-        <SignInAlertModal/>
         <button className="fixed bottom-4 right-4 bg-gray-500 text-white text-lg py-1 px-8 rounded-full hover:bg-black"
           onClick={() => {
             document.getElementById("sign-in-alert-modal").classList.remove("hidden");
