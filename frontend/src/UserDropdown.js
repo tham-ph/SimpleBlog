@@ -1,8 +1,5 @@
-import {getUserDataContext} from "./App";
-import {useContext} from "react";
 
 const UserDropdown = () => {
-  const {userData, setUserData} = useContext(getUserDataContext());
 
   return (
     <div className="relative">
@@ -18,9 +15,15 @@ const UserDropdown = () => {
 
       {/*dropdown list*/}
       <div id="dropdown" className="hidden flex flex-col whitespace-nowrap absolute top-9 right-2 bg-gray-400 text-white shadow-md rounded">
-        <button className="py-2 px-4 rounded hover:bg-black">
-          Change the username
+
+        <button className="py-2 px-4 rounded hover:bg-black"
+          onClick={() => {
+            document.getElementById("change-user-name-modal").classList.remove("hidden");
+          }}
+        >
+          Change Username
         </button>
+
         <button className="py-2 px-4 rounded hover:bg-black">
           Sign Out
         </button>
