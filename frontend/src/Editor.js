@@ -4,38 +4,39 @@ import {useState} from "react";
 
 const Editor = () => {
   const [mode, setMode] = useState(0);
-  const [rawText, setRawText] = useState("");
+  const [rawTitleText, setRawTitleText] = useState("");
+  const [rawContentText, setRawContentText] = useState("");
 
-  let screen;
+  let content;
   if (mode === 0) {
-    screen =
+    content =
       <textarea className="border-2 border-gray-300 resize-none"
         rows="20"
-        value={rawText}
+        value={rawContentText}
         placeholder="Write your content here"
         onChange={(event) => {
-          setRawText(event.target.value);
+          setRawContentText(event.target.value);
         }}
       >
       </textarea>
   } else if (mode === 1) {
-    screen =
+    content =
       <div className="border-2 border-gray-300">
         <ReactMarkdown className="prose"
                        remarkPlugins={[remarkGfm]}
         >
-          {rawText}
+          {rawTitleText + rawContentText}
         </ReactMarkdown>
       </div>
   } else if (mode === 2) {
-    screen =
+    content =
       <div className="flex gap-2 items-start">
         <textarea className="w-1/2 border-2 border-gray-300 resize-none"
           rows="20"
-          value={rawText}
+          value={rawContentText}
           placeholder="Write your content here"
           onChange={(event) => {
-            setRawText(event.target.value);
+            setRawContentText(event.target.value);
           }}
         >
         </textarea>
@@ -43,15 +44,35 @@ const Editor = () => {
           <ReactMarkdown className="prose"
                          remarkPlugins={[remarkGfm]}
           >
-            {rawText}
+            {rawTitleText + rawContentText}
           </ReactMarkdown>
         </div>
       </div>
   }
+
   return (
     <div className="flex flex-col p-4 gap-8">
       <h2 className="text-xl font-bold">Create A New Blog</h2>
+
+      {/*Title input*/}
+      <div>
+        <label className="font-bold">Title: </label>
+        <form>
+          <input
+            className="border-2 border-gray-300 w-full text-4xl"
+            placeholder="Title"
+            type="text"
+            onChange={(event) => {
+              setRawTitleText("# " + event.target.value + "\n");
+            }}
+          />
+        </form>
+      </div>
+
       <div className="flex flex-col w-full gap-2">
+        <label className="font-bold">Content: </label>
+
+        {/*Switch viwer buttons*/}
         <div className="flex">
           <button id="edit-button" className="bg-black text-white p-2 border border-gray-300 rounded hover:bg-black"
                   onClick={() => {
@@ -92,8 +113,12 @@ const Editor = () => {
           >Split Edit | Preview
           </button>
         </div>
+        <p className="text-red-500">*** This is a markdown editor ***</p>
       </div>
-      {screen}
+
+      {content}
+
+      {/*Create and Cancel buttons*/}
       <div className="flex justify-end gap-2">
         <button className="bg-gray-500 text-white p-2 rounded hover:bg-black">Create</button>
         <button className="bg-white text-black p-2 border border-black rounded hover:bg-gray-200">Cancel</button>
