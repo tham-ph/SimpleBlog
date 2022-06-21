@@ -52,7 +52,7 @@ const Editor = () => {
 
   return (
     <div className="flex flex-col p-4 gap-8">
-      <h2 className="text-xl font-bold">Create A New Blog</h2>
+      <h2 className="text-2xl font-bold">Create A New Blog</h2>
 
       {/*Title input*/}
       <div>
@@ -113,7 +113,11 @@ const Editor = () => {
           >Split Edit | Preview
           </button>
         </div>
-        <p className="text-red-500">*** This is a markdown editor ***</p>
+        <p className="text-red-500">
+          This is a Markdown editor (not support HTML tags).
+          <br/>
+          <a className="underline" href="https://www.markdownguide.org/basic-syntax/">Basic Markdown Syntax</a>
+        </p>
       </div>
 
       {content}
