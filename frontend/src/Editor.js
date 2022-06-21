@@ -8,14 +8,16 @@ const Editor = () => {
 
   let screen;
   if (mode === 0) {
-    screen = <textarea className="border-2 border-gray-300 resize-none"
-                    rows="20"
-                    value={rawText}
-                    onChange={(event) => {
-                      setRawText(event.target.value);
-                    }}
-            >
-            </textarea>
+    screen =
+      <textarea className="border-2 border-gray-300 resize-none"
+        rows="20"
+        value={rawText}
+        placeholder="Write your content here"
+        onChange={(event) => {
+          setRawText(event.target.value);
+        }}
+      >
+      </textarea>
   } else if (mode === 1) {
     screen =
       <div className="border-2 border-gray-300">
@@ -29,11 +31,12 @@ const Editor = () => {
     screen =
       <div className="flex gap-2 items-start">
         <textarea className="w-1/2 border-2 border-gray-300 resize-none"
-                rows="20"
-                value={rawText}
-                onChange={(event) => {
-                  setRawText(event.target.value);
-                }}
+          rows="20"
+          value={rawText}
+          placeholder="Write your content here"
+          onChange={(event) => {
+            setRawText(event.target.value);
+          }}
         >
         </textarea>
         <div className="w-1/2 border-2 border-gray-300">
