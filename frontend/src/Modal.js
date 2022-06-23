@@ -4,7 +4,7 @@ const Modal = ({id, children}) => {
     <div id={id} className="hidden fixed z-10 inset-0 bg-gray-500 bg-opacity-75 flex justify-center items-center">
       <div className="bg-white rounded-lg p-4 flex flex-col items-end">
 
-        <button className="text-gray-500 hover:text-black"
+        <button className="cross-close-button text-gray-500 hover:text-black"
           onClick={() => {
             document.getElementById(id).classList.add("hidden");
           }}

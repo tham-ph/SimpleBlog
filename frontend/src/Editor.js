@@ -1,11 +1,21 @@
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
-import {useState} from "react";
+import {useContext, useEffect, useState} from "react";
+import {getUserDataContext} from "./App";
 
 const Editor = () => {
+  const {userData} = useContext(getUserDataContext());
   const [mode, setMode] = useState(0);
   const [rawTitleText, setRawTitleText] = useState("");
   const [rawContentText, setRawContentText] = useState("");
+
+  useEffect(() => {
+    if (Object.keys(userData).length === 0) {
+      document.getElementById("sign-in-alert-modal").classList.remove("hidden");
+      document.querySelector("#sign-in-alert-modal .cross-close-button").classList.add("hidden");
+    }
+  }, []);
+
 
   let content;
   if (mode === 0) {
@@ -127,6 +137,7 @@ const Editor = () => {
         <button className="bg-gray-500 text-white p-2 rounded hover:bg-black">Create</button>
         <button className="bg-white text-black p-2 border border-black rounded hover:bg-gray-200">Cancel</button>
       </div>
+
     </div>
   );
 }
