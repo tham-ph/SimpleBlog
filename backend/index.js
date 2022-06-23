@@ -17,6 +17,9 @@ app.get("/api/env/google-oauth-client-id", (req, res) => {
 const userRoutes = require("./routes/userRoutes");
 app.use("/api/users", userRoutes);
 
+const blogRoutes = require("./routes/blogRoutes");
+app.use("/api/blogs", blogRoutes);
+
 app.get("/getAllUsers", (req, res) => {
   userModel.find({},(err, result) => {
     if (err) {
