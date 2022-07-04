@@ -23,25 +23,43 @@ const createBlog = async(req, res) => {
 
 const getBlogById = async(req, res) => {
   const blogId = req.param("id");
+  try {
+    const blog = await blogModel.findById(blogId);
 
-  const blog = await blogModel.findById(blogId);
+    res.json({
+      id: blog._id,
+      title: blog.title,
+      content: blog.content,
+      date: blog.date,
+      views: blog.views,
+      owner_id: blog.owner_id
+    });
 
-  if (!blog) {
-    res.status(404);
-    throw new Error("Blog not found");
+  } catch (err) {
+    console.log(err);
+    res.status(404).send("Blog Not Found");
   }
-
-  res.json({
-    id: blog._id,
-    title: blog.title,
-    content: blog.content,
-    date: blog.date,
-    views: blog.views,
-    owner_id: blog.owner_id
-  });
 }
+
+const getAllBlogs = async (req, res) => {
+  const allBlogs = await blogModel.find({});
+
+  res.json(allBlogs.map(blog => {
+    return {
+      id: blog._id,
+      title: blog.title,
+      content: blog.content,
+      date: blog.date,
+      views: blog.views,
+      owner_id: blog.owner_id
+    }
+  }));
+}
+
+
 
 module.exports = {
   createBlog,
-  getBlogById
+  getBlogById,
+  getAllBlogs
 }

@@ -30,7 +30,7 @@ app.get("/getAllUsers", (req, res) => {
   });
 });
 
-
-app.listen(process.env.PORT || 5000, () => {
-  console.log("running!!!");
+const PORT = process.env.PORT || 5000;
+app.listen(PORT, () => {
+  console.log("Listening on port " + PORT);
 });
