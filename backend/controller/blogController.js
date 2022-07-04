@@ -12,6 +12,7 @@ const createBlog = async(req, res) => {
   })
 
   res.json({
+    id: newBlog._id,
     title: newBlog.title,
     content: newBlog.content,
     date: newBlog.date,
@@ -20,6 +21,27 @@ const createBlog = async(req, res) => {
   });
 }
 
+const getBlogById = async(req, res) => {
+  const blogId = req.param("id");
+
+  const blog = await blogModel.findById(blogId);
+
+  if (!blog) {
+    res.status(404);
+    throw new Error("Blog not found");
+  }
+
+  res.json({
+    id: blog._id,
+    title: blog.title,
+    content: blog.content,
+    date: blog.date,
+    views: blog.views,
+    owner_id: blog.owner_id
+  });
+}
+
 module.exports = {
-  createBlog
+  createBlog,
+  getBlogById
 }
