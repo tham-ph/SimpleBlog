@@ -2,6 +2,8 @@ import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import {useContext, useEffect, useState} from "react";
 import {getUserDataContext} from "./App";
+import {Link} from "react-router-dom";
+import Axios from "axios";
 
 const Editor = () => {
   const {userData} = useContext(getUserDataContext());
@@ -134,8 +136,25 @@ const Editor = () => {
 
       {/*Create and Cancel buttons*/}
       <div className="flex justify-end gap-2">
-        <button className="bg-gray-500 text-white p-2 rounded hover:bg-black">Create</button>
-        <button className="bg-white text-black p-2 border border-black rounded hover:bg-gray-200">Cancel</button>
+
+        <button className="bg-gray-500 text-white p-2 rounded hover:bg-black"
+          onClick={() => {
+            Axios.post("/api/blogs/create", {
+              title: rawTitleText,
+              content: rawContentText,
+              owner_id: userData.id
+            }).catch(err => {
+              console.log(err);
+            });
+          }}
+        >
+          <Link to="/">Create</Link>
+        </button>
+
+        <button className="bg-white text-black p-2 border border-black rounded hover:bg-gray-200">
+            <Link to="/">Cancel</Link>
+        </button>
+
       </div>
 
     </div>
