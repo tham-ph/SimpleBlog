@@ -138,7 +138,7 @@ const Editor = () => {
       <div className="flex justify-end gap-2">
 
         <button className="bg-gray-500 text-white p-2 rounded hover:bg-black"
-          onClick={() => {
+          onClick={async () => {
             Axios.post("/api/blogs/create", {
               title: rawTitleText,
               content: rawContentText,
