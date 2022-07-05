@@ -38,7 +38,26 @@ const changeUserName = async(req, res) => {
   });
 }
 
+const getUserById = async (req, res) => {
+  const userId = req.param("id");
+  console.log(userId);
+  try {
+    const user = await userModel.findById(userId);
+    res.json({
+      id: user._id,
+      email: user.email,
+      name: user.name,
+      pictureURL: user.pictureURL
+    })
+  } catch (err) {
+    console.log(err);
+    res.status(404).send("User Not Found");
+  }
+
+}
+
 module.exports = {
   signInWithGoogle,
-  changeUserName
+  changeUserName,
+  getUserById
 }
