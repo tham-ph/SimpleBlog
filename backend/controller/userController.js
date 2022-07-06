@@ -40,7 +40,7 @@ const changeUserName = async(req, res) => {
 
 const getUserById = async (req, res) => {
   const userId = req.param("id");
-  console.log(userId);
+
   try {
     const user = await userModel.findById(userId);
     res.json({
