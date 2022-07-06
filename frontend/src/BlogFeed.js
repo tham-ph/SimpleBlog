@@ -15,11 +15,11 @@ const BlogFeed = () => {
   }, []);
 
   const blogMap = blogList.map(blogData => {
-    return <BlogCard blogData={blogData}/>;
+    return <BlogCard key={blogData.id} blogData={blogData}/>;
   });
 
   return (
-    <div className="flex flex-wrap justify-center gap-4 p-2">
+    <div className="flex flex-wrap justify-center gap-4 py-16">
       <CreateANewBlogButton/>
       {blogMap}
     </div>
