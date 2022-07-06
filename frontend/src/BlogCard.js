@@ -44,16 +44,17 @@ const BlogCard = ({blogData}) => {
     <button className="text-left">
       <div className="flex flex-col justify-between w-80 h-80 p-4 gap-2 rounded-lg shadow-lg hover:bg-gray-200">
 
-        <div className="flex flex-col overflow-hidden">
-          <ReactMarkdown className="prose" remarkPlugins={[remarkGfm]}>
-            {blogData.title}
-          </ReactMarkdown>
+        <ReactMarkdown className="prose break-words text-xs overflow-hidden"
+                       remarkPlugins={[remarkGfm]}>
+          {blogData.title + blogData.content}
+        </ReactMarkdown>
+        {/*<ReactMarkdown className="prose break-words text-sm" remarkPlugins={[remarkGfm]}>*/}
+        {/*    {blogData.title}*/}
+        {/*</ReactMarkdown>*/}
 
-          <ReactMarkdown className="prose opacity-50" remarkPlugins={[remarkGfm]}>
-            {/*{blogData.content.substring(0, 200) + "..."}*/}
-            {blogData.content}
-          </ReactMarkdown>
-        </div>
+        {/*<ReactMarkdown className="prose opacity-50 overflow-hidden text-sm" remarkPlugins={[remarkGfm]}>*/}
+        {/*    {blogData.content}*/}
+        {/*</ReactMarkdown>*/}
 
         <div className="flex justify-between text-sm">
 
