@@ -27,7 +27,7 @@ const ChangeUserNameModal = () => {
           <div>
             <div className="flex justify-end gap-2">
               <button className="bg-gray-500 text-white p-2 rounded hover:bg-black"
-                onClick={() => {
+                onClick={async () => {
                   Axios.post("/api/users/change-user-name", {
                     userId: userData.id,
                     newName: inputName
