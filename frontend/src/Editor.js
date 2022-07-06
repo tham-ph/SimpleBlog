@@ -34,7 +34,7 @@ const Editor = () => {
   } else if (mode === 1) {
     content =
       <div className="border-2 border-gray-300">
-        <ReactMarkdown className="prose"
+        <ReactMarkdown className="prose break-words"
                        remarkPlugins={[remarkGfm]}
         >
           {rawTitleText + rawContentText}
@@ -53,7 +53,7 @@ const Editor = () => {
         >
         </textarea>
         <div className="w-1/2 border-2 border-gray-300">
-          <ReactMarkdown className="prose"
+          <ReactMarkdown className="prose break-words"
                          remarkPlugins={[remarkGfm]}
           >
             {rawTitleText + rawContentText}
