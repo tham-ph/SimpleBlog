@@ -17,7 +17,7 @@ const createBlog = async(req, res) => {
     content: newBlog.content,
     date: newBlog.date,
     views: newBlog.views,
-    owner_id: newBlog.owner_id
+    ownerId: newBlog.owner_id
   });
 }
 
@@ -32,7 +32,7 @@ const getBlogById = async(req, res) => {
       content: blog.content,
       date: blog.date,
       views: blog.views,
-      owner_id: blog.owner_id
+      ownerId: blog.owner_id
     });
 
   } catch (err) {
@@ -51,7 +51,7 @@ const getAllBlogs = async (req, res) => {
       content: blog.content,
       date: blog.date,
       views: blog.views,
-      owner_id: blog.owner_id
+      ownerId: blog.owner_id
     }
   }));
 }

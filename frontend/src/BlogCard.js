@@ -8,7 +8,7 @@ const BlogCard = ({blogData}) => {
   const {userData} = useContext(getUserDataContext());
   const [ownerData, setOwnerData] = useState({});
   useEffect(() => {
-    Axios.get("api/users/id/" + blogData.owner_id).then(res => {
+    Axios.get("api/users/id/" + blogData.ownerId).then(res => {
       setOwnerData(res.data);
     }).catch(err => {
       console.log(err);
