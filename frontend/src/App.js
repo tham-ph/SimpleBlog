@@ -5,6 +5,7 @@ import Editor from "./Editor";
 import {createContext, useState} from "react";
 import SignInAlertModal from "./SignInAlertModal";
 import ChangeUserNameModal from "./ChangeUserNameModal";
+import BlogPage from "./BlogPage";
 
 const UserDataContext = createContext();
 
@@ -24,6 +25,7 @@ function App() {
         <Routes>
           <Route path="/" element={<BlogFeed/>} />
           <Route path="/create" element={<Editor/>} />
+          <Route path="/blogs/:id" element={<BlogPage/>} />
         </Routes>
       </BrowserRouter>
     </UserDataContext.Provider>
