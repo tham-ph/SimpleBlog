@@ -2,7 +2,7 @@ import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import {useContext, useEffect, useState} from "react";
 import {getUserDataContext} from "./App";
-import {Link} from "react-router-dom";
+import {Link, useNavigate} from "react-router-dom";
 import Axios from "axios";
 
 const Editor = () => {
@@ -10,6 +10,7 @@ const Editor = () => {
   const [mode, setMode] = useState(0);
   const [rawTitleText, setRawTitleText] = useState("");
   const [rawContentText, setRawContentText] = useState("");
+  let navigate = useNavigate();
 
   useEffect(() => {
     if (Object.keys(userData).length === 0) {
@@ -146,9 +147,10 @@ const Editor = () => {
             }).catch(err => {
               console.log(err);
             });
+            navigate("/");
           }}
         >
-          <Link to="/">Create</Link>
+          Create
         </button>
 
         <button className="bg-white text-black p-2 border border-black rounded hover:bg-gray-200">
