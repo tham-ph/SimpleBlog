@@ -56,10 +56,15 @@ const getAllBlogs = async (req, res) => {
   }));
 }
 
+const deleteBlogById = async (req) => {
+  const {blogId} = req.body;
+  await blogModel.deleteOne({_id: blogId});
+}
 
 
 module.exports = {
   createBlog,
   getBlogById,
-  getAllBlogs
+  getAllBlogs,
+  deleteBlogById
 }

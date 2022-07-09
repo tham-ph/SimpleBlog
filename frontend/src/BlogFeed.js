@@ -7,7 +7,7 @@ const BlogFeed = () => {
   const [blogList, setBlogList] = useState([]);
 
   useEffect(() => {
-    Axios.get("api/blogs/").then(res => {
+    Axios.get("api/blogs/get-all-blogs").then(res => {
       setBlogList(res.data);
     }).catch(err => {
       console.log(err);
