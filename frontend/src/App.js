@@ -6,6 +6,7 @@ import {createContext, useState} from "react";
 import SignInAlertModal from "./SignInAlertModal";
 import ChangeUserNameModal from "./ChangeUserNameModal";
 import BlogPage from "./BlogPage";
+import DeleteAlertModal from "./DeleteAlertModal";
 
 const UserDataContext = createContext();
 
@@ -21,6 +22,7 @@ function App() {
       <BrowserRouter>
         <SignInAlertModal/>
         <ChangeUserNameModal/>
+        <DeleteAlertModal/>
         <Navbar/>
         <Routes>
           <Route path="/" element={<BlogFeed/>} />
