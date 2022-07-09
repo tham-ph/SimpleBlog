@@ -30,7 +30,6 @@ const UserSignIn = () => {
             }).catch((err) => {
               console.log(err)
             });
-            setUserData(userObject);
 
             if (!document.getElementById("sign-in-alert-modal").classList.contains("hidden")) {
               document.getElementById("sign-in-alert-modal").classList.add("hidden")
