@@ -16,4 +16,7 @@ router.post("/delete", deleteBlogById);
 const editBlog = require("../controller/blogController").editBlog;
 router.post("/edit", editBlog);
 
+const updateViews = require("../controller/blogController").updateViews;
+router.post("/update-views", updateViews);
+
 module.exports = router;

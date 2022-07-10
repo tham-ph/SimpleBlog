@@ -82,11 +82,18 @@ const editBlog = async (req, res) => {
 
 }
 
+const updateViews = async (req) => {
+  const {blogId} = req.body;
+  const blog = await blogModel.findById(blogId);
+  blog.views++;
+  await blog.save();
+}
 
 module.exports = {
   createBlog,
   getBlogById,
   getAllBlogs,
   deleteBlogById,
-  editBlog
+  editBlog,
+  updateViews
 }
