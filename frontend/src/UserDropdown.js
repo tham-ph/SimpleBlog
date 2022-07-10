@@ -24,7 +24,12 @@ const UserDropdown = () => {
           Change Username
         </button>
 
-        <button className="py-2 px-4 rounded hover:bg-black">
+        <button className="py-2 px-4 rounded hover:bg-black"
+          onClick={() => {
+            localStorage.clear();
+            window.location.reload(false);
+          }}
+        >
           Sign Out
         </button>
       </div>
