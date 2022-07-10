@@ -61,10 +61,32 @@ const deleteBlogById = async (req) => {
   await blogModel.deleteOne({_id: blogId});
 }
 
+const editBlog = async (req, res) => {
+  const editedBlog = req.body;
+
+  let blog = await blogModel.findById(editedBlog.id);
+  blog.title = editedBlog.title;
+  blog.content = editedBlog.content;
+  blog.date = new Date();
+
+  await blog.save();
+
+  res.json({
+    id: blog._id,
+    title: blog.title,
+    content: blog.content,
+    date: blog.date,
+    views: blog.views,
+    ownerId: blog.owner_id
+  });
+
+}
+
 
 module.exports = {
   createBlog,
   getBlogById,
   getAllBlogs,
-  deleteBlogById
+  deleteBlogById,
+  editBlog
 }

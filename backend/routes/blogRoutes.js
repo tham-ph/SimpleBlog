@@ -13,4 +13,7 @@ router.get("/get-all-blogs", getAllBlogs);
 const deleteBlogById = require("../controller/blogController").deleteBlogById;
 router.post("/delete", deleteBlogById);
 
+const editBlog = require("../controller/blogController").editBlog;
+router.post("/edit", editBlog);
+
 module.exports = router;
