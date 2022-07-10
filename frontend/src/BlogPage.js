@@ -5,12 +5,14 @@ import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import {getUserDataContext} from "./App";
 import extractDate from "./extractDate";
+import {useNavigate} from "react-router-dom";
 
 const BlogPage = () => {
   const blogId = useParams().id;
   const [blogData, setBlogData] = useState({title: "#", content: "#", date: "1-1-2000", ownerId: ""});
   const [ownerData, setOwnerData] = useState({});
   const {userData} = useContext(getUserDataContext());
+  const navigate = useNavigate();
 
   useEffect(() => {
     Axios.get("/api/blogs/id/" + blogId).then(res => {
@@ -42,7 +44,11 @@ const BlogPage = () => {
       {
         ownerData.id === userData.id && (
           <div className="flex gap-2">
-            <button className="bg-gray-500 text-white p-2 rounded hover:bg-black">Edit</button>
+            <button className="bg-gray-500 text-white p-2 rounded hover:bg-black"
+                    onClick={() => {
+                      navigate("/blogs/edit/" + blogId);
+                    }}
+            >Edit</button>
             <button className="bg-red-600 text-white p-2 rounded hover:bg-red-900"
                     onClick={() => {
                       const modal = document.getElementById("delete-alert-modal");

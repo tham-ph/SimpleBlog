@@ -2,10 +2,13 @@ import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import {useContext, useEffect, useState} from "react";
 import {getUserDataContext} from "./App";
-import {Link, useNavigate} from "react-router-dom";
+import {Link, useNavigate, useParams} from "react-router-dom";
 import Axios from "axios";
 
 const Editor = () => {
+  const blogId = useParams().id;
+  const [blogData, setBlogData] = useState({});
+
   const {userData} = useContext(getUserDataContext());
   const [mode, setMode] = useState(0);
   const [rawTitleText, setRawTitleText] = useState("");
@@ -17,8 +20,17 @@ const Editor = () => {
       document.getElementById("sign-in-alert-modal").classList.remove("hidden");
       document.querySelector("#sign-in-alert-modal .cross-close-button").classList.add("hidden");
     }
-  }, []);
 
+    if (blogId) {
+      Axios.get("/api/blogs/id/" + blogId).then(res => {
+        setRawTitleText(res.data.title);
+        setRawContentText(res.data.content);
+        setBlogData(res.data);
+      }).catch(err => {
+        console.log(err);
+      });
+    }
+  }, []);
 
   let content;
   if (mode === 0) {
@@ -75,6 +87,7 @@ const Editor = () => {
             className="border-2 border-gray-300 w-full text-4xl"
             placeholder="Title"
             type="text"
+            value={rawTitleText.substring(2, rawTitleText.length)}
             onChange={(event) => {
               setRawTitleText("# " + event.target.value + "\n");
             }}
@@ -139,18 +152,31 @@ const Editor = () => {
       <div className="flex justify-end gap-2">
 
         <button className="bg-gray-500 text-white p-2 rounded hover:bg-black"
-          onClick={async () => {
-            Axios.post("/api/blogs/create", {
-              title: rawTitleText,
-              content: rawContentText,
-              owner_id: userData.id
-            }).catch(err => {
-              console.log(err);
-            });
-            navigate("/");
-          }}
+                onClick={async () => {
+                  if (!blogId) {
+                    Axios.post("/api/blogs/create", {
+                      title: rawTitleText,
+                      content: rawContentText,
+                      owner_id: userData.id
+                    }).then(res => {
+                      navigate("/blogs/" + res.data.id);
+                    }).catch(err => {
+                      console.log(err);
+                    });
+                  } else {
+                    Axios.post("/api/blogs/edit", {
+                      id: blogData.id,
+                      title: rawTitleText,
+                      content: rawContentText,
+                    }).then(res => {
+                      navigate("/blogs/" + res.data.id);
+                    }).catch(err => {
+                      console.log(err);
+                    });
+                  }
+                }}
         >
-          Create
+          {!blogId ? <p>Create</p> : <p>Edit</p>}
         </button>
 
         <button className="bg-white text-black p-2 border border-black rounded hover:bg-gray-200">

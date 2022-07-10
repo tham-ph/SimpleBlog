@@ -28,6 +28,7 @@ function App() {
           <Route path="/" element={<BlogFeed/>} />
           <Route path="/create" element={<Editor/>} />
           <Route path="/blogs/:id" element={<BlogPage/>} />
+          <Route path="/blogs/edit/:id" element={<Editor/>} />
         </Routes>
       </BrowserRouter>
     </UserDataContext.Provider>
