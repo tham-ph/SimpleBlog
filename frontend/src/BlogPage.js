@@ -56,9 +56,11 @@ const BlogPage = () => {
 
     </div>
 
-    <ReactMarkdown className="prose max-w-fit break-words py-4" remarkPlugins={[remarkGfm]}>
-      {blogData.title + blogData.content}
-    </ReactMarkdown>
+    <div className="flex justify-center w-full">
+      <ReactMarkdown className="prose w-full break-words py-4" remarkPlugins={[remarkGfm]}>
+        {blogData.title + blogData.content}
+      </ReactMarkdown>
+    </div>
 </div>
 );
 }
