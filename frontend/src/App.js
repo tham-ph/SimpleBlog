@@ -2,7 +2,7 @@ import Navbar from "./Navbar";
 import BlogFeed from "./BlogFeed";
 import {BrowserRouter, Route, Routes} from "react-router-dom";
 import Editor from "./Editor";
-import {createContext, useState} from "react";
+import {createContext, useEffect, useState} from "react";
 import SignInAlertModal from "./SignInAlertModal";
 import ChangeUserNameModal from "./ChangeUserNameModal";
 import BlogPage from "./BlogPage";
@@ -16,6 +16,13 @@ const getUserDataContext = () => {
 
 function App() {
   const [userData, setUserData] = useState({});
+
+  useEffect(() => {
+    const localStorageUserData = JSON.parse(localStorage.getItem("userData"));
+    if (localStorageUserData) {
+      setUserData(localStorageUserData);
+    }
+  }, [])
 
   return (
     <UserDataContext.Provider value={{userData, setUserData}}>

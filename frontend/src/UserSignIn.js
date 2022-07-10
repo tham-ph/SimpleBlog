@@ -27,6 +27,7 @@ const UserSignIn = () => {
               pictureURL: userObject.picture
             }).then((res) => {
               setUserData(res.data);
+              localStorage.setItem("userData", JSON.stringify(res.data));
             }).catch((err) => {
               console.log(err)
             });
