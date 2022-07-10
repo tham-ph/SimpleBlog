@@ -42,7 +42,7 @@ const getBlogById = async(req, res) => {
 }
 
 const getAllBlogs = async (req, res) => {
-  const allBlogs = await blogModel.find({});
+  const allBlogs = await blogModel.find({}).sort({date: 1});
 
   res.json(allBlogs.map(blog => {
     return {
