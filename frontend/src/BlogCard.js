@@ -19,7 +19,13 @@ const BlogCard = ({blogData}) => {
   }, [userData]);
 
   return (
-    <button className="text-left">
+    <button className="text-left" onClick={() => {
+      Axios.post("/api/blogs/update-views", {
+        blogId: blogData.id
+      }).catch(err => {
+        console.log(err);
+      })
+    }}>
       <Link to={`/blogs/${blogData.id}`}>
 
         <div className="flex flex-col justify-between w-80 h-80 p-4 gap-2 rounded-lg shadow-lg hover:bg-gray-200">
