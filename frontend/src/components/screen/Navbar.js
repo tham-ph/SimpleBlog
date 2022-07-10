@@ -1,4 +1,4 @@
-import UserControl from "./UserControl";
+import UserControl from "../user/UserControl";
 import {Link} from "react-router-dom";
 
 const Navbar = () => {

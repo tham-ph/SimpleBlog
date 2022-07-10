@@ -1,6 +1,6 @@
 import Modal from "./Modal";
 import {useContext, useEffect, useState} from "react";
-import {getUserDataContext} from "./App";
+import {getUserDataContext} from "../../App";
 import Axios from "axios";
 
 const ChangeUserNameModal = () => {

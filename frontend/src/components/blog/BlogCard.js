@@ -2,9 +2,9 @@ import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import {useContext, useEffect, useState} from "react";
 import Axios from "axios";
-import {getUserDataContext} from "./App";
+import {getUserDataContext} from "../../App";
 import {Link} from "react-router-dom";
-import extractDate from "./extractDate";
+import extractDate from "../../utils/extractDate";
 
 const BlogCard = ({blogData}) => {
   const {userData} = useContext(getUserDataContext());

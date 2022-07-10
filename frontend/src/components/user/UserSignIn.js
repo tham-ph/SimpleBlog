@@ -2,7 +2,7 @@ import {GoogleOAuthProvider, GoogleLogin} from "@react-oauth/google";
 import {useState, useEffect, useContext} from "react";
 import Axios from "axios";
 import jwt_decode from "jwt-decode";
-import {getUserDataContext} from "./App";
+import {getUserDataContext} from "../../App";
 
 const UserSignIn = () => {
   const [clientId, setClientId] = useState("");

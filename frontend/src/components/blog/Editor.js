@@ -1,7 +1,7 @@
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import {useContext, useEffect, useState} from "react";
-import {getUserDataContext} from "./App";
+import {getUserDataContext} from "../../App";
 import {Link, useNavigate, useParams} from "react-router-dom";
 import Axios from "axios";
 
@@ -142,7 +142,7 @@ const Editor = () => {
         <p className="text-red-500">
           This is a Markdown editor (not support HTML tags).
           <br/>
-          <a className="underline" href="https://www.markdownguide.org/basic-syntax/">Basic Markdown Syntax</a>
+          <a className="underline" href="frontend/src/components/blog/Editor">Basic Markdown Syntax</a>
         </p>
       </div>
 

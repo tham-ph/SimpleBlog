@@ -1,12 +1,12 @@
-import Navbar from "./Navbar";
-import BlogFeed from "./BlogFeed";
+import Navbar from "./components/screen/Navbar";
+import BlogFeed from "./components/blog/BlogFeed";
 import {BrowserRouter, Route, Routes} from "react-router-dom";
-import Editor from "./Editor";
+import Editor from "./components/blog/Editor";
 import {createContext, useEffect, useState} from "react";
-import SignInAlertModal from "./SignInAlertModal";
-import ChangeUserNameModal from "./ChangeUserNameModal";
-import BlogPage from "./BlogPage";
-import DeleteAlertModal from "./DeleteAlertModal";
+import SignInAlertModal from "./components/modal/SignInAlertModal";
+import ChangeUserNameModal from "./components/modal/ChangeUserNameModal";
+import BlogPage from "./components/blog/BlogPage";
+import DeleteAlertModal from "./components/modal/DeleteAlertModal";
 
 const UserDataContext = createContext();
 

@@ -1,5 +1,5 @@
 import Modal from "./Modal";
-import UserSignIn from "./UserSignIn";
+import UserSignIn from "../user/UserSignIn";
 
 const SignInAlertModal = () => {
   return (

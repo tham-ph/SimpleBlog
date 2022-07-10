@@ -1,5 +1,5 @@
 import BlogCard from "./BlogCard";
-import CreateANewBlogButton from "./CreateANewBlogButton";
+import CreateANewBlogButton from "../modal/CreateANewBlogButton";
 import {useEffect, useState} from "react";
 import Axios from "axios";
 

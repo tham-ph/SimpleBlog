@@ -1,4 +1,4 @@
-import {getUserDataContext} from "./App";
+import {getUserDataContext} from "../../App";
 import UserSignIn from "./UserSignIn";
 import UserProfile from "./UserProfile";
 import UserDropdown from "./UserDropdown";

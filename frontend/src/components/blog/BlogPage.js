@@ -3,8 +3,8 @@ import {useContext, useEffect, useState} from "react";
 import Axios from "axios";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
-import {getUserDataContext} from "./App";
-import extractDate from "./extractDate";
+import {getUserDataContext} from "../../App";
+import extractDate from "../../utils/extractDate";
 import {useNavigate} from "react-router-dom";
 
 const BlogPage = () => {

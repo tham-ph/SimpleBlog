@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import {useContext} from "react";
-import {getUserDataContext} from "./App";
+import {getUserDataContext} from "../../App";
 
 const CreateANewBlogButton = () => {
   const {userData} = useContext(getUserDataContext());

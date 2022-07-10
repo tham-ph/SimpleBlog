@@ -1,4 +1,4 @@
-import {getUserDataContext} from "./App";
+import {getUserDataContext} from "../../App";
 import {useContext} from "react";
 
 const UserProfile = ({children}) => {
