@@ -3,12 +3,10 @@ import {useState, useEffect, useContext} from "react";
 import Axios from "axios";
 import jwt_decode from "jwt-decode";
 import {getUserDataContext} from "./App";
-import { useNavigate } from "react-router-dom";
 
 const UserSignIn = () => {
   const [clientId, setClientId] = useState("");
   const {setUserData} = useContext(getUserDataContext());
-  let navigate = useNavigate();
 
   useEffect(() => {
     Axios.get("/api/env/google-oauth-client-id").then(res => {
@@ -21,7 +19,7 @@ const UserSignIn = () => {
         <GoogleLogin
           onSuccess={(res) => {
             const userObject = jwt_decode(res.credential);
-            Axios.post("api/users/sign-in-with-google", {
+            Axios.post("/api/users/sign-in-with-google", {
               email: userObject.email,
               name: userObject.name,
               pictureURL: userObject.picture
@@ -35,8 +33,6 @@ const UserSignIn = () => {
             if (!document.getElementById("sign-in-alert-modal").classList.contains("hidden")) {
               document.getElementById("sign-in-alert-modal").classList.add("hidden")
             }
-
-            {navigate("/")}
 
           }}
           onError={() => {
