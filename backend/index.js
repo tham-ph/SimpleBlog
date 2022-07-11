@@ -20,11 +20,10 @@ app.use("/api/users", userRoutes);
 const blogRoutes = require("./routes/blogRoutes");
 app.use("/api/blogs", blogRoutes);
 
-app.use(express.static(path.join(__dirname, '../frontend/public')));
-app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, '../frontend/public/index.html'));
+app.use(express.static(path.join(__dirname, "../frontend/build")));
+app.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname, "../frontend/build/index.html"));
 });
-
 
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
