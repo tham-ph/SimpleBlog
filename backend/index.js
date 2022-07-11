@@ -20,14 +20,8 @@ app.use("/api/users", userRoutes);
 const blogRoutes = require("./routes/blogRoutes");
 app.use("/api/blogs", blogRoutes);
 
-app.get("/getAllUsers", (req, res) => {
-  userModel.find({},(err, result) => {
-    if (err) {
-      res.json(err);
-    } else {
-      res.json(result);
-    }
-  });
+app.get("/", (req, res) => {
+  res.send("API is running");
 });
 
 const PORT = process.env.PORT || 5000;
