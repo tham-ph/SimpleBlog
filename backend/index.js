@@ -3,7 +3,7 @@ const app = express();
 const mongoose = require("mongoose");
 const cors = require("cors");
 require("dotenv").config({path: "../.env"});
-const userModel = require("./models/userModel");
+const path = require("path");
 
 app.use(express.json());
 app.use(cors());
@@ -20,9 +20,11 @@ app.use("/api/users", userRoutes);
 const blogRoutes = require("./routes/blogRoutes");
 app.use("/api/blogs", blogRoutes);
 
-app.get("/", (req, res) => {
-  res.send("API is running");
+app.use(express.static(path.join(__dirname, '../frontend/public')));
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, '../frontend/public/index.html'));
 });
+
 
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
