@@ -30,8 +30,9 @@ const BlogCard = ({blogData}) => {
 
         <div className="flex flex-col justify-between w-80 h-80 p-4 gap-2 rounded-lg shadow-lg hover:bg-gray-200">
 
-          <ReactMarkdown className="prose break-words text-xs overflow-hidden"
-                         remarkPlugins={[remarkGfm]}>
+          <ReactMarkdown className="prose break-words text-xs line-clamp-10"
+                         remarkPlugins={[remarkGfm]}
+          >
             {blogData.title + blogData.content}
           </ReactMarkdown>
 
