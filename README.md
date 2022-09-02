@@ -6,7 +6,7 @@ This is a markdown blogging website.
 
 I created this website for learning React, Node.js and MongoDB.
 
-https://simple-blog-web.herokuapp.com
+https://simple-blog-6pgk.onrender.com
 
 ## Usage
 
